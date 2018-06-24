@@ -1,0 +1,21 @@
+# No derived resources
+target/
+bin/
+
+# No Github Pages
+gh-pages/
+
+# No Eclipse settings
+.settings/
+.project
+.checkstyle
+
+# No IntelliJ Idea project files
+.idea/
+*.iml
+
+# No temp files
+*~
+
+# No magic files used by the OS
+.DS_Store
