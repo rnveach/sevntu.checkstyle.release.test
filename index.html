@@ -1,0 +1,1341 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>sevntu-checkstyle/sevntu.checkstyle @ GitHub</title>
+    <script type="text/Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style type="text/css">
+body {
+  margin-top: 1.0em;
+  background-color: #E8F2FC;
+    font-family: Helvetica, Arial, FreeSans, sans-serif;
+  color: #000;
+}
+
+#container {
+  margin: 0 auto;
+  width: 65%;
+}
+
+h1 {
+  font-size: 3.1em;
+  color: #242630;
+  margin-bottom: 10px;
+}
+
+h1 .small {
+  font-size: 0.4em;
+}
+
+h1 a {
+  text-decoration: none
+}
+
+h2 {
+  font-size: 1.7em;
+  color: #242630;
+}
+
+h3 {
+  text-align: left;
+  color: #242630;
+}
+
+a {
+  color:#242630;
+  -o-transition:.01s;
+  -ms-transition:.01s;
+  -moz-transition:.01s;
+  -webkit-transition:.01s;
+  transition:.01s;
+
+  /* Micro shadow in all sides */
+  text-shadow: 0 0 1px #79848F;
+  transform: scale(1.01);
+}
+
+a:hover {
+  color: #242630;
+}
+
+.description {
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.download {
+  float: right;
+}
+
+pre {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+}
+
+hr {
+  border: 0;
+  width: 80%;
+  border-bottom: 1px solid #aaa
+}
+
+.footer {
+  text-align: center;
+  padding-top: 30px;
+  font-style: italic;
+}
+
+.spoiler:hover h3{
+    color: #1D4875;
+}
+
+div.spoiler div.name {
+	cursor: pointer;
+    height:auto;
+    width:auto;
+}
+
+div.spoiler div.text {
+	display: none;
+}
+
+img.jumpingImage {
+    float: left;
+    margin-top: 4px;
+    -webkit-transition: margin 0.2s ease-out;
+    -moz-transition: margin 0.2s ease-out;
+    -o-transition: margin 0.2s ease-out;
+}
+
+img.jumpingImage:hover {
+    margin-top: 3px;
+}
+
+img.shadowed {
+  /* Shadow in all sides */
+  box-shadow: 0 0 3px #3B3B3B;
+}
+
+img.darkShadowed {
+  /* Shadow in all sides */
+  box-shadow: 0 0 5px #0F0F0F;
+}
+
+</style>
+
+</head>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34158835-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/Javascript">
+  $(function () {
+    // Configure spoilers. Spoilers are configured by their classes:
+    // openOnHover color_on_hover pre_opened_spoiler
+    var fadeTime = 300;
+
+    // Set the toggle operarions (spoilers fading)
+    var spoilers = $("div.spoiler div.name span");
+    var flag = false;
+    spoilers.on('click', function () {
+      var elementToToggle = $(this).parent("div.name").parent("div.spoiler").children("div.text");
+      if (flag === false) {
+        elementToToggle.fadeIn(fadeTime);
+      } else {
+        elementToToggle.fadeOut(fadeTime);
+      }
+      flag = !flag;
+    });
+
+    // Open spoilers with 'pre-opened' class
+    $(".pre_opened_spoiler").children("div.text").fadeIn(fadeTime);
+    // End configure spoilers
+  });
+	</script>
+
+<body>
+  <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle">
+   <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+  </a>
+
+  <div id="container">
+
+    <h1><a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle">Sevntu-Checkstyle</a></h1>
+      <p><span class="small">By students from around the world.
+      <br/>
+	Licence is <a href="https://www.gnu.org/licenses/lgpl-2.1.en.html">GNU LESSER GENERAL PUBLIC LICENSE Version 2.1.</a>
+      </span></p>
+
+    <h2>Description</h2>
+
+    <div class="description">
+      Main idea of <a href="https://checkstyle.sourceforge.net/">Checkstyle</a> project is to automate and to ease code-review process; to assist developers in complying with the company's Code-standard, and allow them to fix and eliminate any minor problem upon just saving the file.
+We are strongly convinced that it is much more easier and convenient to catch minor traps in code during writing than after committing/pushing. This project contains a number of Checks that can help program engineers to write code in a uniform style, which makes it easier for the whole team of programmers to review the code, also significantly improves the low threshold of understanding for new developers.
+      <br/>
+      <br/>
+This project is additional(non-standard) checks for Checkstyle that are compiled as extension to maven-checkstyle-plugin, Sonar Checkstyle Plugin, CheckStyle-IDEA, Checkstyle Eclipse plugin, see <a href="#distribution">Distribution</a> chapter for more details.
+See <a href="apidocs/index.html">Javadoc pages</a> for documentation of Check option.
+<br/>
+<br/>
+      This project is incubator for Checkstyle checks that are not present in main stream of Checkstyle project.
+      If you have a check and need place to be build-in, let us know.
+      <br/>
+      If you want to study Java(with mentoring) and help us develop some Checks let us know,
+      we are looking for new maintainers and level of Java experience does not matter.
+      <br/>
+      <br/>
+      We offer diversity of nonstandard Checks and each developer's group chooses what to use to satisfy their code-standard needs.
+      <br/>
+      <br/>
+
+    </div>
+
+    <h2>Contact</h2>
+		<p> Roman Ivanov: ivanov-jr[*]mail[*]ru
+			<br/>
+		</p>
+    <h2>Discussion group</h2>
+	      <p> Homepage:	 	<a href="https://groups.google.com/group/sevntu-checkstyle?hl=en">discussion group</a> <br/></p>
+        <p> Group email:	 	sevntu-checkstyle[ a ]googlegroups.com</p>
+    <h2>IRC</h2>
+        <p> <a href="https://webchat.freenode.net/?channels=#sevntu.checkstyle">#sevntu.checkstyle on Freenode</a></p>
+
+<h2 id="distribution">Distribution</h2>
+<p>
+We do deployment to Maven central -
+<a href="https://repo1.maven.org/maven2/com/github/sevntu-checkstyle/">https://repo1.maven.org/maven2/com/github/sevntu-checkstyle/</a> for following artifacts:
+<ul>
+<li>sevntu-checks</li>
+<li>sevntu-checkstyle-idea-extension</li>
+<li>sevntu-checkstyle-maven-plugin</li>
+<li>sevntu-checkstyle-sonar-plugin</li>
+</ul>
+</p>
+<p>
+<span id="checkstyle-maven">- extension to <a href="https://maven.apache.org/plugins/maven-checkstyle-plugin/">maven-checkstyle-plugin</a> (how to use: <a href="https://maven.apache.org/plugins/maven-checkstyle-plugin/examples/custom-developed-checkstyle.html">in general</a>, <a href="https://github.com/sevntu-checkstyle/checkstyle-samples/tree/master/maven-project">maven example</a>, <a href="https://github.com/sevntu-checkstyle/checkstyle-samples/tree/master/ant-project">ant example</a>).</span><br>
+<span id="checkstyle-sonar">- extension to <a href="https://docs.codehaus.org/display/SONAR/Checkstyle+Plugin">Sonar Checkstyle Plugin</a> (how to use: <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/How-to-integrate-sevntu-checks-into-SonarQubeTM-%28user%27s-guide%29">in general</a>).</span><br>
+<span id="checkstyle-idea">- extension to <a href="https://plugins.jetbrains.com/plugin/1065">CheckStyle-IDEA</a> (how to use: <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/How-to-use-SevNTU-Checkstyle-in-Intellij-IDEA">in general</a>).</span><br>
+<span id="eclipsecs-update-site">- extension to <a href="https://eclipse-cs.sourceforge.net/">Checkstyle Eclipse plugin</a> how to use: install from EclipseCS “update site” or use our update site https://sevntu-checkstyle.github.com/sevntu.checkstyle/update-site/ (do not use this link in Browser, it will return 404 code, it is expected, but it will work well through Eclipse menu "Help"->"Install New Software ...") </span>
+</p>
+
+<h2 id="ExamplesOfUsage">Examples of usage</h2>
+<p>
+Full list of Checks and examples of usage could be found at
+<a href="https://github.com/checkstyle/checkstyle/blob/master/config/checkstyle_sevntu_checks.xml">config</a>
+ that <a href="https://checkstyle.sourceforge.net/">checkstyle</a> project use.
+</p>
+
+<h2> New and noteworthy</h2>
+<!--
+<div id="X.Y.Z" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release X.Y.Z (9/Oct/2014)</h3></span></div>
+<div class="text">
+     <b>new FooBarCheck</b> -&nbsp; %DESCRIPTION%. Done by %AUTHOR%.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/%PR_NUMBER%">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+-->
+      <div id="1.29.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.29.0 (6/Apr/2018)</h3></span></div>
+<div class="text">
+     <b>breaking compatibility changes for CustomDeclarationOrderCheck</b> -&nbsp; CustomDeclarationOrderCheck: Correct spelling of DeclareAnonClassField. Done by Josh Soref. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/656">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>a lot spelling fixes</b> -&nbsp; Done by rnveach and Josh Soref.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; Updating sevntu-checks.xml to refer to new dtd. Done by Raghav Kumar Gautam. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/648">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.28.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.28.0 (26/Feb/2018)</h3></span></div>
+<div class="text">
+     <b>new ForbidCertainMethodCheck</b> -&nbsp; Check that forbidden method is not used. We can forbid a method by method name and number of arguments. Done by Raghav Kumar Gautam. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/604">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.27.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.27.0 (14/January/2018)</h3></span></div>
+<div class="text">
+     <b>internal updates</b> update to use eclipse-cs 8.7.0. Done by rnveach.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.26.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.26.0 (1/January/2017)</h3></span></div>
+<div class="text">
+     <b>internal updates</b> update to use eclipse-cs 8.5.1. Done by Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.25.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.25.0 (25/Nov/2017)</h3></span></div>
+<div class="text">
+     <b>new RequireFailForTryCatchInJunitCheck</b> -&nbsp; Checks if a try/catch block has a junit fail assertion inside the try  for a junit method. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/618">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>new CheckstyleTestMakeupCheck</b> -&nbsp; Custom check to ensure Checkstyle tests are designed correctly. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/610">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>a lot of other internal updates</b> -&nbsp; Done by rnveach and Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.24.2" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.24.2 (20/July/2017)</h3></span></div>
+<div class="text">
+     <b>internal updates</b> update to IllegalCatchExtendedCheck and NestedSwitchCheck to avoid usage of deprecated parent class. Done by rnveach.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.24.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.24.1 (2/July/2017)</h3></span></div>
+<div class="text">
+     <b>bug</b> -&nbsp; added get acceptable and required tokens in all checks. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/595">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>internal updates</b> update to use eclipse-cs 7.6.0 .  More upadates for maven central deploy. Done by Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.24.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.24.0 (27/May/2017)</h3></span></div>
+
+<div class="text">
+     <b>NEW</b> -&nbsp; groupId is changed to 'com.github.sevntu-checkstyle' , maven artifacts deployed to maven central. Done by Roman Ivanov. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/165">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; changed issue template to specify command based on OS. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/560">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; ignore object blocks for ShortCircuitOperator check. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/559">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in non-classes for ShortCircuitOperators check. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/568">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in MapIterationInForEachLoopCheck for map classes. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/427">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in NoNullForCollectionReturnCheck for constructors. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/573">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in ForbidWildcardAsReturnTypeCheck. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/575">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in MapIterationInForEachLoop for maps without this. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/580">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in FinalizeImplementationCheck. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/578">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed NPE in AvoidHidingCauseException on wrapping. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/577">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; added new check MoveVariableInsideIfCheck. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/565">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; rewrote EnumValueNameCheck to follow naming check pattern. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/448">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; fixed OutOfBoundsException in CauseParameterInException. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/589">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; bump version of eclipse-cs. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/591">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     minor: change name for UniformEnumConstantNameCheck in eclipse plugin. Done by Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.23.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.23.1 (25/Feb/2017)</h3></span></div>
+<div class="text">
+     <b>internal updates</b> config: define license version in pom.xml as LGPL-2.1+;
+     Issue #520: 100% coverage for EnumValueNameCheck;
+     Issue #520: 100% coverage for ChildBlockLengthCheck;
+     Done by rnveach and Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.23.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.23.0 (10/Dec/2016)</h3></span></div>
+<div class="text">
+     <b>bug</b> -&nbsp; ForbidCertainImportsCheck: null excludes gives no violations. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/552">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; ConfusingConditionCheck: NPE from CS. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/454">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; ReturnCountExtendedCheck takes into account 'returns' in lambdas . Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/463">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; Checkstyle Package XML should be in core library JAR . Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/259">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>internal updates</b> -&nbsp; added dynamic checkstyle regression;
+     Wiki to CI: Messages, Inputs, and JUnit;
+     partial Sevntu-Checks: 100% code coverage;
+     enforce usage of all sevntu Check over sevntu-checks code.
+     added commit validation test
+     added missing checks to config
+     enable checkstyle over all sources in sevntu-checks
+     fixed test failures in sonar extension
+     started automated testing of sonar and eclipsecs files
+     Done by rnveach.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>internal updates</b> -&nbsp; minor: sevntu-checkstyle-sonar-plugin build with maven-checkstyle-plugin
+     Convert \t TAB char to 4 spaces in sevntu-checkstyle-sonar-plugin
+     dos2unix x14
+     ... a lot of other updates
+     . Done by vorburger.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.22.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.22.0 (19/Nov/2016)</h3></span></div>
+<div class="text">
+     <b>new ForbidAnnotationElementValueCheck</b> -&nbsp; Forbids specific element value for specific annotation. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/108">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>update for project code style</b> -&nbsp; removed some legacy violations from sevntu. Done by rnveach. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/310">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>jdk update</b> -&nbsp; changed java 7 compile to java 8. Done by rnveach.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>eclipse-cs update</b> -&nbsp; update to eclipse-cs 7.2 version. Done by rnveach.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>minor</b> -&nbsp; few minor updates. Done by vorburger.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.21.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.21.1 (15/Oct/2016)</h3></span></div>
+<div class="text">
+     <b>update for sevntu-checkstyle-idea-extension</b> -&nbsp; Idea Extension is incorrectly build by maven. Done by KTannenberg. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/468">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>update for ForbidCertainImportsCheck</b> -&nbsp; Fix violation message of ForbidCertainImportsCheck. Done by MEZk. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/469">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.21.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.21.0 (08/June/2016)</h3></span></div>
+<div class="text">
+     <b>new UniformEnumValueCheck</b> -&nbsp; Check forces enum values to match one of the specified patterns and forces all the values to follow only one of the specified patterns.
+ . Done by Pavel Baranchikov. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/445">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>new javadoc for all Checks</b> -&nbsp; Fix all javadoc problems in sevntu-checks project. <a href="apidocs/index.html">JAVADOC IS HERE</a>. Done by Daniil Yaroslavtsev and Roman Ivanov. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/409">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>update for ConstructorWithoutParamsCheck</b> -&nbsp; Udpdate the default config in ConstructorWithoutParamsCheck. Done by zerg-junior. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/446">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.20.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.20.0 (25/March/2016)</h3></span></div>
+<div class="text">
+     <b>new ConstructorWithoutParamsCheck</b> -&nbsp; This check prohibits usage of parameterless constructors, including the default ones. Rationale: constructors of certain classes must always take arguments to properly instantiate objects. Done by Sergey Dudoladov. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/412">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>new properties for AvoidModifiersForTypes</b> -&nbsp; New options: forbiddenClassesRegexpAnnotation, forbiddenClassesRegexpPrivate, forbiddenClassesRegexpPackagePrivate, forbiddenClassesRegexpProtected, forbiddenClassesRegexpPublic. Done by Yasser Aziza. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/410">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.19.2" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.19.2 (20/March/2016)</h3></span></div>
+<div class="text">
+     <b>bug</b> -&nbsp; False positive in DiamondOperatorForVariableDefinitionCheck . Done by Vladislav Lisetskiy. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/430">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.19.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.19.1 (10/March/2016)</h3></span></div>
+<div class="text">
+     <b>bug </b> -&nbsp; Sevntu Sonar plugin 1.19.0 does not work with Sonar 5.3. Done by Charlie Pai. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/436">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug</b> -&nbsp; NumericLiteralNeedsUnderscore fails sonar project analysis. Done by Charlie Pai. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/437">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.19.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.19.0 (8/March/2016)</h3></span></div>
+<div class="text">
+     <b>bug </b> -&nbsp; NumericLiteralNeedsUnderscore: New option to skip fields by regexp. Done by Charlie Pai. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/425">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>version update</b> -&nbsp; Eclispe-cs version is 1.16.0, checkstyle 1.16.1. Done by Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.18.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.18.0 (17/January/2016)</h3></span></div>
+<div class="text">
+     <b>new SingleBreakOrContinue</b> -&nbsp; This check restricts the number of break and continue statements inside cycle body (only one is allowed). Done by Yasser Aziza. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/374">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>new NumericLiteralNeedsUnderscore</b> -&nbsp; This check verifies that large numeric literals are spaced by underscores. Done by Charlie Pai. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/187">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b>bug </b> -&nbsp; Rename checks to follow Checkstyle convention for check names. Checks AvoidDefaultSerializableInInnerClasses, ForbidCCommentsInMethods, ReturnBooleanFromTernary, ReturnNullInsteadOfBoolean renamed to have "Check" as suffix in name. Done by Andrei Selkin. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/417">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.17.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.17.1 (14/December/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp; Fix false-positive on methods called from 'super' at StaticMethodCandidateCheck. Done by Vladislav Lisetskiy.
+      <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/393">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> bug </b> -&nbsp; Fix false-positive on methods with varargs at StaticMethodCandidateCheck. Done by Vladislav Lisetskiy.
+      <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/397">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> bug </b> -&nbsp; Shade Guava in sonar-plugin . Done by Vladislav Lisetskiy.
+      <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/401">More</a>
+   <br/>
+   <br/>
+</div>
+
+</div>
+
+      <div id="1.17.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.17.0 (8/November/2015)</h3></span></div>
+<div class="text">
+     <b>new StaticMethodCandidateCheck </b> -&nbsp; Checks whether private methods can be declared as static. Done by Vladislav Lisetskiy. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/339">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> bug </b> -&nbsp; Fix WhitespaceBeforeArrayInitializer for jagged arrays . Done by Michal Kordas.
+      <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/386">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.16.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.16.1 (28/October/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp; Cannot initialize module SingleSpaceSeparator. Done by Roman Ivanov. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/385">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.16.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.16.0 (25/October/2015)</h3></span></div>
+<div class="text">
+     <b> new SingleSpaceSeparatorCheck </b> -&nbsp; Checks that if tokens are separated by whitespaces, it has to be a single space. Done by Robert Whitebit.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> version bump </b> -&nbsp; Update Maven Checkstyle Plugin to 2.17 . Done by Michal Kordas.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.15.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.15.0 (8/October/2015)</h3></span></div>
+<div class="text">
+     <b> version bump </b> -&nbsp; Version bump to Eclipse-CS 6.11.0 . Done by David Ignjić.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> version bump </b> -&nbsp; Version bump to checkstyle 6.11.2 . Done by David Ignjić.
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> bug </b> -&nbsp; CauseParameterInExceptionCheck: NullPointerException occurred during the analysis. Done by David Ignjić. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/355">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.14.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.14.0 (26/September/2015)</h3></span></div>
+<div class="text">
+     <b> version bump </b> -&nbsp; Version bump to Eclipse-CS 6.9.0 . Done by Roman Ivanov.
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.6" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.6 (7/September/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp;  LogicConditionNeedOptimizationCheck doesn't give violation when it is expected. Done by Vadim Panasiuk.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/367">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> bug </b> -&nbsp;  AvoidNotShortCircuitOperatorsForBooleanCheck: NullPointerException occurred during the analysis. Done by Christian Oyarzun.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/354">More</a>
+   <br/>
+   <br/>
+</div>
+<div class="text">
+     <b> bug </b> -&nbsp;  Cannot set property 'blockTypes' in module ChildBlockLength. Done by Christian Oyarzun.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/351">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.5" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.5 (23/June/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp;  sevntu-checks are failed within Sonar because of the outdated checkstyle-extensions.xml. Done by Ruslan Diachenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/362">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.4" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.4 (21/June/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp; Sonar fails to start with 'Extension to Sonar Checkstyle Plugin 1.13.3'. Done by Ruslan Diachenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/359">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.3" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.3 (7/June/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp; ReturnNullInsteadOfBoolean:   Remove FastStack reference that was removed from checkstyle 6.7. Done by Roman Ivanov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/349">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.2" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.2 (7/June/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp;  DiamondOperatorForVariableDefinitionCheck throws NullPointerException. Done by Roman Ivanov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/348">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.1" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.1 (6/June/2015)</h3></span></div>
+<div class="text">
+     <b> bug </b> -&nbsp; PublicReferenceToPrivateTypeCheck fails on all files in eclipse-cs. Done by Roman Ivanov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/343">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+      <div id="1.13.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.13.0 (16/May/2015)</h3></span></div>
+<div class="text">
+     <b>VariableDeclarationUsageDistanceCheck</b> -&nbsp; was moved to Checkstyle library. Done by Roamn Ivanov.
+   <br/>
+   <br/>
+
+   <br/>
+     <b>AbbreviationAsWordInNameCheck</b> -&nbsp; was moved to Checkstyle library. Done by Roamn Ivanov.
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW RequiredParameterForAnnotationCheck</b> -&nbsp; Check that annotation is used with all required parameters. Done by Andrew Uljanenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/321">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW UselessSuperCtorCallCheck</b> -&nbsp; Checks for useless "super()" calls in ctors. Done by Zuy Alexey.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/186">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW EmptyPublicCtorInClassCheck</b> -&nbsp; This Check looks for useless empty public constructors. Class constructor is considered useless by this Check if and only if class has exactly one ctor, which is public, empty (one that has no statements) and default. Done by Zuy Alexey.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/291">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW NameConventionForJunit4TestClassesCheck</b> -&nbsp; This check verifies the name of JUnit4 test class for compliance with user defined naming convention. Done by Zuy Alexey.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/80">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW UselessSingleCatchCheck</b> -&nbsp; Checks for the presence of useless single catch blocks. Catch block can be considered useless if it is the only catch block for try, contains only one statement which rethrows catched exception. Done by Zuy Alexey.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/267">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW AvoidConditionInversion</b> -&nbsp; This Check helps to catch condition inversion cases which could be rewritten in a more readable manner. Done by Alexey Kravin.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/112">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>NEW NestedSwitchCheck</b> -&nbsp;  Checking if there is no switch block inside other switch block. Done by Damian Szczepanik.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/249">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>Bug</b> -&nbsp;  fix for NPE in ConfusingConditionCheck. Done by melodicwing.
+   <br/>
+   <br/>
+
+   <br/>
+     <b>Bug</b> -&nbsp;  Fixed false positive in check ForbidReturnInFinallyBlockChech. Done by Andrew Uljanenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/269">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>Bug</b> -&nbsp;  Diamond operator - fixed violations on anonymous classes. Done by Alexey Kravin.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/270">More</a>
+   <br/>
+   <br/>
+
+</div>
+</div>
+
+      <div id="1.12.0" class="spoiler pre_opened_spoiler">
+<div class="name"><span><h3>Release 1.12.0 (9/Oct/2014)</h3></span></div>
+<div class="text">
+     <b>Update in Redundant Return Check</b> -&nbsp; Redundant Return Check was retested and fixed. Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/258">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>Update in ForbidThrowAnonymousExceptionsCheck</b> -&nbsp; Reduced ForbidThrowAnonymousExceptionsCheck's limitation. Now this Check puts violation on throwing anonymous exception even in case if it is defined before throwing. Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/248">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>Update in LineLengthCheck</b> -&nbsp; Updated LineLengthCheck to print the current line length in it's warnings. Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/245">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>DiamondOperatorForVariableDefinitionCheck</b> -&nbsp; This Check highlights variable definition statements where diamond operator could be used. Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/194">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>PublicReferenceToPrivateTypeCheck</b> -&nbsp; This Check warns on propagation of inner private types to outer classes:<br>- Externally accessible method if it returns private inner type.<br>- Externally accessible field if it's type is a private inner type.<br>These types could be <a href='https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html'>private inner classes</a>, interfaces or enumerations. Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/201">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>TernaryPerExpressionCountCheck</b> -&nbsp; Replaced existing NestedTernaryCheck with more general TernaryPerExpressionCountCheck.<br/>
+      New Check provides options to ignore ternary sequences with explicitly set priority level (expressions in braces) and also to force Check to ignore ternary operators which are isolated inside a single line.
+      Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/198">More</a>
+   <br/>
+   <br/>
+
+   <br/>
+     <b>Update in CustomDeclarationOrderCheck</b> -&nbsp; Updated Check to treat more king of methods as setters. E.g., now Check treats 'set' method as setter, in cases like:
+<br/><br/>
+public void setWorkMode(String workMode) {<br/>
+this.workMode = WorkMode.valueOf(workMode);<br/>
+}<br/>
+public void setUserCache(UserCache userCache) {<br/>
+super.setUserCache(userCache);<br/>
+}<br/>
+public void setY(Integer y) { // setter<br/>
+this.y = Integer.parseInt(y + "");<br/>
+}<br/><br/>  Done by Alexey Nesterenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/193">More</a>
+   <br/>
+   <br/>
+
+</div>
+</div>
+
+
+<div id="1.11.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.11.0 (7/May/2014)</h3></span></div>
+<div class="text">
+  <br/>
+     <b>Update for CustomDeclarationOrderCheck</b> -&nbsp; New macros for Fields with assigning to Anonymous classes, macros for Setter/Geter, macros for nested interfaces and nested enumarations
+macros for "main()" method. Done by Baratali Izmailov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/73">More</a>
+   <br/>
+   <br/>
+  <br/>
+     <b>EnumValueNameCheck</b> -&nbsp; Check forces enum values to match the specific pattern. Done by Pavel Baranchikov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/168">More</a>
+   <br/>
+   <br/>
+   <br/>
+     <b>CheckFinalizeImplementation</b> -&nbsp; This Check detects 3 most common cases of incorrect finalize() method implementation. Done by Max Vetrenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/72">More</a>
+   <br/>
+   <br/>
+   <br/>
+     <b>ForbidThrowAnonymousExceptions</b> -&nbsp; Forbid throwing anonymous exception. limitation: This Check does not validate cases then Exception object is created before it is thrown. Done by Max Vetrenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/117">More</a>
+   <br/>
+   <br/>
+   <br/>
+     <b>MapIterationInForEachLoopCheck</b> -&nbsp; This check can help you to write the whole for-each map iteration more correctly. Done by Max Vetrenko.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/77">More</a>
+   <br/>
+   <br/>
+   <br/>
+     <b>update in deployment scipt</b> -&nbsp; Fixed -all mode in deploy.sh. Done by Ashutosh Agarwal.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/162">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+<div id="1.10.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.10.0 (24/Nov/2013)</h3></span></div>
+<div class="text">
+  <br/>
+     <span style="color: red;">New project!</span> <b>sevntu-checkstyle-sonar-plugin</b> - &nbsp;Project was created as extension to <a href="https://docs.codehaus.org/display/SONAR/Checkstyle+Plugin" target="_blank">Sonar Checkstyle Plugin</a>&nbsp;for <a href="https://www.sonarqube.org/" target="_blank">SonarQube&trade;</a>, How to use it is described <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/How-to-integrate-sevntu-checks-into-SonarQubeTM-%28user%27s-guide%29" target="_blank">here</a> in detail and pictures, Done by Ruslan Diachenko. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/113" target="_blank">More</a>.
+   <br/>
+   <br/>
+  <br/>
+     <span style="color: red;">New project!</span> <b>sevntu-checkstyle-idea-extension</b> - &nbsp;Project was created as extension for <a href="https://plugins.jetbrains.com/plugin/1065" target="_blank">Checkstyle IDEA</a> plugin for <a href="https://www.jetbrains.com/idea/" target="_blank">IntelliJ IDEA</a>, How to use it is described <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/How-to-use-SevNTU-Checkstyle-in-Intellij-IDEA" target="_blank">here</a> in details and pictures, Done by Vadim Panasiuk. <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/114" target="_blank">More</a>.
+   <br/>
+   <br/>
+  <br/>
+     <b>Update for CustomDeclarationOrderCheck</b> -&nbsp; Inner Classes in methods are ignored. Done by Baratali Izmailov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/58">More</a>
+   <br/>
+   <br/>
+  <br/>
+     <b>Updates in messages</b> -&nbsp; Done by Baratali Izmailov, Ilja Dubinin, Vadim Panasiuk.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/58">More</a>
+   <br/>
+   <br/>
+  <br/>
+     <b>Update in VariableDeclarationUsageDistanceCheck</b> -&nbsp; Update to support block constructions/builders and methods with long list arguments,Done by Baratali Izmailov.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/32">More</a>
+   <br/>
+   <br/>
+  <br/>
+     <b>Update in ConfusingConditionCheck</b> -&nbsp; Update to skip alarming on sequentional IF, Done by Vadim Panasiuk.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/153">More</a>
+   <br/>
+   <br/>
+  <br/>
+     <b>Update in NoNullForCollectionReturnCheck</b> -&nbsp; Fix for NullPointerException,Done by Ilja Dubinin.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/148">More</a>
+   <br/>
+   <br/>
+  <br/>
+     <b>Update in ForbidCertainImportsCheck</b> -&nbsp; additional field as Regexp for excluding imports from checking,Done by Daniil Yaroslavtsev.
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/140">More</a>
+   <br/>
+   <br/>
+  <br/>
+</div>
+</div>
+
+<div id="1.9.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.9.0 (18/Sept/2013)</h3></span></div>
+<div class="text">
+  <br/>
+     <b>AvoidConstantAsFirstOperandInConditionCheck</b> -&nbsp; Avoid Constant As First Operand In Condition. If comparing values, C(C++) developers prefer to put the constant first in the equality check, to prevent situations of assignment rather than equality checking. But in Java, in IF condition it is impossible to use assignment, so that habit become unnecessary and do damage readability of code.
+     <br/>Example:<br/>
+     <code>if (null == varialble)"</code>
+     <br/> should be <br/>
+     <code>if (varialble == null)"</code>
+     <br/>Done by Sergey Burtsev.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/68">More</a>
+   <br/>
+   <br/>
+     <b>EitherLogOrThrowException</b> -&nbsp; Either log the exception, or throw it, but never do both. Logging and throwing results in multiple log messages for a single problem in the code, and makes problems for the support engineer who is trying to dig through the logs. This is one of the most annoying error-handling antipatterns.
+     <br/>Example:<br/>
+     <code>
+       catch (NoSuchMethodException e) {
+          LOG.error("Blah", e);
+          throw e;
+      }
+     </code>
+     <br/>Done by Baratali Izmailov.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/82">More</a>
+   <br/>
+   <br/>
+     <b>ForbidWildcardAsReturnTypeCheck</b> -&nbsp; Do not use wildcard types as return
+        types. Rather than providing additional flexibility for your users, it would force
+        them to use wildcard types in client code.
+        Properly used, wildcard types are nearly invisible to users of a class. They
+        cause methods to accept the parameters they should accept and reject those they
+        should reject. If the user of a class has to think about wildcard types, there is
+        probably something wrong with the class’s API.
+        <br/>Example:<br/>
+        <code>public &lt;T&gt; List&lt;? extends T&gt; getValues()</code>
+     <br/>Done by Baratali Izmailov.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/75">More</a>
+   <br/>
+   <br/>
+     <b>NoNullForCollectionReturnCheck</b> -&nbsp; Check detect when method, that must return array or collection, return null value instead of empty collection or empty array.
+     <br/>Example:<br/>
+     <code>public List&lt;String&gt; metValues() { return null; }</code>
+     <br/>Done by Ilja Dubinin.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/63">More</a>
+   <br/>
+   <br/>
+     <b>ConfusingConditionCheck</b> -&nbsp; This check prevents negation within an "if" expression if "else" is present.
+     <br>For example, rephrase:<br/>
+     <code>if (x != y) smth1(); else smth2(); </code>
+     <br/> as: <br/>
+     <code>if (x == y) smth2(); else smth1(); </code>
+     <br/>Done by Vadim Panasiuk.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/90">More</a>.
+     <br/>
+     Examples of usage and all options description is <a href="https://roman-ivanov.blogspot.com/2014/01/confusing-condition-check-examples.html">here</a>.
+   <br/>
+   <br/>
+   <br/>
+     <b>NoMainMethodInAbstractClassCheck</b> -&nbsp; Forbids main methods in abstract classes. Rationale: existance of 'main' method can mislead a developer to consider this class as a ready-to-use implementation.
+     <br/>Example:<br/>
+     <code>
+         abstract class AbstractUiJob {...  public static void main(String args[]){ ... } ... }
+	 </code>
+     <br/>Done by Baratali Izmailov.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/116">More</a>
+   <br/>
+   <br/>
+   <br/>
+     <b>SimpleAccessorNameNotationCheck</b> -&nbsp; Check only direct fields and setter and getter. Options: 1) member prefix "m_" 2) check only simple getter/setter XXXType getXXXName(); void setXXXName(XXXType).
+     <br/>Example:<br/>
+     <code>private String value; </code><br/>
+     <code>void setValue(String val) { this.value = val;} </code>
+     <br/>Reimplemented and fixed by Ilja Dubinin.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/74">More</a>
+   <br/>
+   <br/>
+     <b>AbbreviationAsWordInNameCheck</b> -&nbsp; problem detection of 2 char abbreviation with length limit 1 was fixed.
+     <br/>Example:<br/>
+     <code>int scaleX;</code>
+     <br/>Done by Baratali Izmailov.&nbsp;
+     <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/116">More</a>
+   <br/>
+   <br/>
+</div>
+</div>
+
+<div id="1.8.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.8.0 (16/Apr/2012)</h3></span></div>
+<div class="text">
+	<b>NestedTernaryCheck</b> -&nbsp;This check forbids nested ternary operators (with option to ignore final variable initializations except initializations inside C-tors).
+	<br/>Done by Daniil Yaroslavtsev.&nbsp;
+	(<a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/98">issue</a>)
+    <br/>
+    <br/>
+    <b>ForbidReturnInFinallyBlockCheck</b> -&nbsp; This check reports if the finally block contains a return statement.
+    <br/>Done by Vadim Panasiuk.&nbsp;
+    (<a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/78">issue</a>).
+    <br/>
+    <br/>
+	 Update for ChildBlockLengthCheck to show current sizes of 'bad' blocks, not only allowed sizes for it.
+   <br/>Done by Daniil Yaroslavtsev.&nbsp;
+	 <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/pull/97">More</a>
+     <br/>
+     <br/>
+	 Fixed bugs in AvoidHidingCauseExceptionCheck -&nbsp; More information: <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/52">issue</a>.
+   <br/>Done by Ilja Dubinin.&nbsp;
+    <br/>
+    <br/>
+    Fixed bugs in OverridableMethodInConstructorCheck -&nbsp; More information: <a 	href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/51">issue</a>. Also added new option
+    that allow compare methods by number of their parameters.
+    <br/>Done by Ilja Dubinin. &nbsp;
+
+	<br/>
+  <br/>
+  Update for ReturnCountCheckExtended -&nbsp; Now RegExp is used in ignored list of methods.
+  <br/>Done by Alexey Grigorov.&nbsp;
+  <br/>
+</div>
+</div>
+
+<div id="1.7.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.7.0 (15/Nov/2012)</h3></span></div>
+<div class="text">
+    <b>AvoidConstantsInInterfacesCheck</b> -&nbsp; has been removed as it has been already implemented in standart Checkstyle. Done by Vadym Chekrii.&nbsp;
+</div>
+</div>
+
+<div id="1.6.2" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.6.2 (12/Nov/2012)</h3></span></div>
+<div class="text">
+    <b>AbbreviationAsWordInNameCheck</b> -&nbsp;problem with constants in interfaces was fixed. Done by Roman Ivanov.&nbsp;
+	<a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/85">issue</a>
+    <br/>
+    <br/>
+</div>
+</div>
+
+<div id="1.6.1" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.6.1 (29/Oct/2012)</h3></span></div>
+<div class="text">
+     Changes for descriptions for Eclipse plugin for checks that appear in 1.6.0. Done by Ilja Dubinin and Roman Ivanov.
+    <br/>
+    <br/>
+</div>
+</div>
+
+<div id="1.6.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.6.0 (21/Oct/2012)</h3></span></div>
+<div class="text">
+    <b>LogicConditionNeedOptimizationCheck</b> -&nbsp; This check prevents the placement of local variables and fields after calling
+methods in '&&' and '||' conditions. Done by Ilja Dubinin.&nbsp;<a href="https://sourceforge.net/p/checkstyle/patches/232/">Patch</a>.
+    <br/>
+    <br/>
+    <b>ForbidCCommentsInMetods</b> -&nbsp; Check prevents usage of C-style (/* ... */) comments inside method body. If you have class declaration inside method body with JavaDoc you will get error too. Done by Ilja Dubinin.&nbsp;<a href="https://sourceforge.net/p/checkstyle/patches/231/">Patch</a>.
+    <br/>
+    <br/>
+    <b>InterfaceTypeParameterNameCheck</b> -&nbsp; Checks that interface type parameter(for template) names conform to a format specified
+by the format property. Default format is ^[A-Z]$. Done by Dmitry Gridyushko.&nbsp;<a href="https://sourceforge.net/p/checkstyle/patches/227/">Patch</a>.
+    <br/>
+    <br/>
+</div>
+</div>
+
+<div id="1.5.3" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.5.3 (4/Sept/2012)</h3></span></div>
+<div class="text">
+Internal release for site generation automation, refactoring of projects structure to be more independend from
+main project and ease code managment and ease new developers unserstanding of project, extension for maven plugin was introduced. Done By Ivan Sopov with help of Ilia Dubinin, Dmitry Gridyushko.
+</div>
+</div>
+
+<div id="1.5.0" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.5.0 (12/Jun/2012)</h3></span></div>
+<div class="text">
+    <b>AvoidDefaultSerializableInInnerClasses</b> -&nbsp;This check prevents the default implementation Serializable interface in
+ inner classes (Serializable interface are default if methods readObject() or writeObject() are not override in class). Check has option, that allow
+ implementation only one method, if it true, but if it false - class must implement both methods. For more information read
+ "Effective Java (2nd edition)" chapter 11, item 74, page 294. Done by Ilia Dubinin.&nbsp;
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3413512&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>IllegalCatchCheck</b> -&nbsp;Minor fix for default values. Done by Daniil Yaroslavtsev.&nbsp;
+<br/>
+<br/>
+    </div>
+</div>
+
+<div id="1.0.5" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.0.5 (14/Apr/2012)</h3></span></div>
+<div class="text">
+    <b>ChildBlockLengthCheck</b> -&nbsp;Length of child block that is more then 90% of parent block is hard to read
+		  in case child block is long(few display screens). Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3197024&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>AvoidModifiersForTypesCheck</b> -&nbsp;Disallow some set of modifiers (Only 4 types according to Java Spec:static,final, transient, volatile)
+		  for specified types, caused by static for ULCComponents. Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3156495&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>CauseParameterInExceptionCheck</b> -&nbsp;Exception Design Best Practices : Cause now needed as one the parameter in any custom Exception constructor.
+		  Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3413157&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>ForbidsCertainImportsCheck</b> -&nbsp;Forbids certain imports usage. Is similar to the useful check in Sonar project.
+		   Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3413148&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>ForbidInstantiationCheck</b> -&nbsp;Forbids instantiation of certain object types by their full classname.
+		    For example: "java.lang.NullPointerException" will forbid the NPE instantiation.
+		    Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3182213&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>ReturnCountExtendedCheck</b> -&nbsp;Checks that method/ctor "return" literal count is not greater than
+		    the given value ("maxReturnCount" property). has many useful ignore options.
+		    Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/index.php?func=detail&aid=3413511&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    <b>AbbreviationAsWordInNameCheck</b> -&nbsp;XMLReader should be names like XmlReader.
+		    Issue for ignoring methods with annotation @Override was fixed. Done by Daniil Yaroslavtsev.&nbsp;
+<a href="https://sourceforge.net/tracker/index.php?func=detail&aid=3300836&group_id=29721&atid=397081">issue</a>
+<br/>
+<br/>
+    </div>
+</div>
+
+<div id="1.0.5" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.0.4 (11/Oct/2011)</h3></span></div>
+<div class="text">
+<b>ForbidAnnotationCheck</b> -&nbsp;Forbid specific annotation for field/method, e.g. forbid @Autowired
+annotation for private field. Done by&nbsp;Victor Hidoyatov.&nbsp;
+<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3165196&amp;group_id=29721&amp;atid=397081">issue</a>
+<br/>
+<br/>
+<b>AvoidConstantsInInterfacesCheck</b> - avoid declaration of constants in interfaces. Done by&nbsp;Vladimir Svikhunov.
+&nbsp;<a class="external-link" href="https://sourceforge.net/tracker/?func=detail&amp;aid=3298876&amp;group_id=29721&amp;atid=397081">issue</a>.
+<br/>
+<br/>
+<b>AvoidHidingCauseExceptionCheck</b> -&nbsp;hiding Cause exception in throwing new exception. Done by Daniil Yaroslavtsev.&nbsp;
+<a class="external-link" href="https://sourceforge.net/tracker/?func=detail&amp;aid=3156070&amp;group_id=29721&amp;atid=397081">issue</a>.
+<br/>
+<br/>
+<b>AvoidNotShortCircuitOperatorsForBooleanCheck</b> -&nbsp;Forbid to use "|", "|=", "&amp;" for boolean/Boolean variables,
+and force to use "||", .... , explanation link. Example: "boolean b |= returnBoolean()".
+Done by Daniil Yaroslavtsev.&nbsp;
+<a class="external-link" href="https://sourceforge.net/tracker/?func=detail&amp;aid=3156065&amp;group_id=29721&amp;atid=397081" >issue</a>.
+<br/>
+<br/>
+<b>IllegalCatchCheck</b> -&nbsp;Options to ignore 1) exact re-throw after logging
+2) creation and throw of other Exception base on current exception. Done by Daniil Yaroslavtsev.&nbsp;
+<a class="external-link" href="https://sourceforge.net/tracker/?func=detail&amp;aid=3156067&amp;group_id=29721&amp;atid=397081" >issue</a>.
+<br/>
+<br/>
+<b>OverridableMethodInConstructorCheck</b> -&nbsp;Do not use protected/public method in C-tor.
+Use only private and final.&nbsp;Check all call hierarchy from c-tor to avoid: c-tor -&gt; private -&gt; public/protected.
+Done by Daniil Yaroslavtsev. (<a href="https://sourceforge.net/tracker/?func=detail&amp;aid=3103877&amp;group_id=29721&amp;atid=397081">issue</a>.
+<br/>
+<br/>
+<b>ReturnBooleanFromTernary</b> -&nbsp;It is a bad practice to return boolean values from ternary operations.
+Just use the value inside branch instead. Done by Ivan Sopov.
+<br/>
+<br/>
+<b>ReturnNullInsteadOfBoolean</b> - Arguably it is the matter of style to use Boolean for ternary logic or enum.
+And since all the information is in the single file and even in the single method,
+I think that checkstyle is capable of doing this. Done by Ivan Sopov.
+(<a href="https://sourceforge.net/tracker/?func=detail&amp;aid=3189246&amp;group_id=29721&amp;atid=397081">issue</a>)
+<br/>
+<br/>
+<b>VariableDeclarationUsageDistanceCheck</b> - check distance between declaration of variable
+and its first usage of it. Options: Allowed distance (in rows); Ignore variable names (regexp).
+Done by Ruslan Diachenko.&nbsp;
+<a class="external-link" href="https://sourceforge.net/tracker/?func=detail&amp;aid=3300836&amp;group_id=29721&amp;atid=397081">issue</a>
+<br/>
+<br/>
+<b>AbbreviationAsWordInNameCheck</b> -&nbsp;XMLReader should be names like XmlReader.
+Checks names for fields, methods , ....... . Few ignore options. Done by Roman Ivanov.
+(<a href="https://sourceforge.net/tracker/?func=detail&amp;aid=3300836&amp;group_id=29721&amp;atid=397081">issue</a>).
+<br/>
+</div>
+</div>
+
+<div id="1.0.2" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.0.2 (15/Mar/2011)</h3></span></div>
+<div class="text">
+AvoidNotShortCircuitOperatorsForBooleanCheck - check to force user not to use ShortCircuit operators ("|", "&" for boolean calculations)
+. Done by Daniil Yaroslavtsev.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3197134&group_id=29721&atid=397080">patch</a>
+<br/>
+<br/>
+MultipleStringLiteralsExtendedCheck - extension of the standart check, newoption was added to highlight all duplicated. Done by Yury Balahonov.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3184230&group_id=29721&atid=397080">patch</a>
+<br/>
+<br/>
+MultipleVariableDeclarationsExtendedCheck - stndard check + option to ignore while/for. Done by Daniil Yaroslavtsev.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3146159&group_id=29721&atid=397080">patch</a>
+
+<br/>
+<br/>
+UnnecessaryParenthesesExtendedCheck - standart check + option to ignore some arguable cases. Dmitriy Antonenko.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3211385&group_id=29721&atid=397080">patch</a>
+</div>
+</div>
+
+<div id="1.0.1" class="spoiler color_on_hover">
+<div class="name"><span><h3>Release 1.0.1 (21/Sept/2010)</h3></span></div>
+<div class="text">
+CustomDeclarationOrderCheck - check to adjust class structure to make it more predictable.
+Done by Danil Lopatin. <a href="https://habrahabr.ru/blogs/java/111739/">acticle in russian</a>
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3044455&group_id=29721&atid=397080">patch and example of config</a>
+<br/>
+<br/>
+InnerClassCheck - force user to place inner classes at the bottom ofthe class. Done by Ruslan Dyachenko.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3027391&group_id=29721&atid=397080">patch</a>
+<br/>
+<br/>
+AbstractClassNameExtendedCheck - extension to check if you named class AbstractXXXXXX then force user to keep it "abstract". Done by Danil Lopatin.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3043752&group_id=29721&atid=397080">patch</a>
+<br/>
+<br/>
+LineLengthExtendedCheck - extension of standard check with a lot of ignore option. Done by Ruslan Dyachenko.
+<a href="https://sourceforge.net/tracker/?func=detail&aid=3044164&group_id=29721&atid=397080">patch</a>
+</div>
+</div>
+
+	<h2>Examples and ideas</h2>
+	Examples of how to use SevNTU-Checkstyle with Maven, Ant or Gradle you can find at <a href="https://github.com/sevntu-checkstyle/checkstyle-samples">checkstyle-samples</a> repo.
+    <p><a href="https://sevntu-checkstyle.github.com/sevntu.checkstyle/gsoc-2013-ideas.html">GSOC 2013 ideas</a>
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/zipball/master">zip</a> or
+      <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="https://git-scm.com">Git</a>
+      by running:
+      <pre style="border-bottom-style: dashed; border-top-style: dashed; border-left-color: #E8F2FC; border-top-color: #E8F2FC; border-left-style: dashed; border-right-color: #E8F2FC; border-right-style: dashed; border-bottom-color: #E8F2FC; border-bottom-width: medium; border-right-width: medium; border-left-width: medium; border-top-width: medium; width:85%;">$ git clone git://github.com/sevntu-checkstyle/sevntu.checkstyle</pre>
+    </p>
+
+    <div class="footer">
+      Get the source code on GitHub : <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle">sevntu-checkstyle/sevntu.checkstyle</a>
+    </div>
+    <br/>
+  </div>
+
+
+</body>
+</html>

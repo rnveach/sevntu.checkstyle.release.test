@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>SevNTU Checkstyle ideas for Google Summer of Code 2013</title>
+	<style type="text/css">
+		body {
+  		margin-top: 1.0em;
+  		background-color: #014870;
+		  font-family: "Helvetica";
+  		color: #ffffff;
+      font-size: 1.1em;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+		h1 { font-size: 3.8em; color: #feb78f; margin-bottom: 3px; }
+		h1 .small { font-size: 0.4em; }
+		h1 a { text-decoration: none }
+		h2 { font-size: 1.5em; color: #feb78f; }
+    h3 { text-align: center; color: #feb78f; }
+    a { color: #feb78f; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+		pre { background: #000; color: #fff; padding: 15px;}
+    li { margin-left: 40px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+	</style>
+	
+</head>
+
+<body>
+  
+  <div id="container">
+
+    <h2>List of project ideas for <br/>Google Summer of Code 2013</h2>
+      <span class="small">Our organization is mostly presented by students from <a href="http://sevntu.com.ua/">Sevastopol National Technical University (SevNTU)</a>, Ukraine. But this is just historical fact, we are open for help from any other contributors/students.
+      <br/>
+	Organization is supervised by developers from <a href="http://www.reveredata.com">Revere Data LLC</a>, however, we are open to any mentors from other organizations who have interest.
+      <br/>
+	License of code is GNU LESSER GENERAL PUBLIC LICENSE Version 2.1.
+      </span>
+
+    <h2>Administrator</h2>
+		<p> Roman Ivanov: romanivanov [dash] jr [a] gmail [d] com
+			<br/>
+		</p>
+
+<h2>Projects</h2>
+
+  <h3><a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle">sevntu.checkstyle</a></h3>
+
+    <b>Brief explanation:</b><br/>
+      Our project is extension to <a href="http://eclipse-cs.sourceforge.net/">EclipseCS plugin</a>. You can install our project from Eclipse update site of  EclipseCS plugin in "Uncategorized" group. List of our already implemented Checks is <a href="http://sevntu-checkstyle.github.com/sevntu.checkstyle/">here</a>.
+      <br/>
+      <br/>
+      Our project is a sort of a test area for many of non-standard Checkstyle Checks; some of them are presented in main stream of Checkstyle project and some have not yet shown up in there. Unfortunately, generating an idea of a new code-rule is not a trivial task. An idea has to be proven and tested throughly on a wide range of projects in open-source community, before it can finally get into the main project and become of use for most of the developers.
+      <br/>
+      <br/>
+      Our team collects ideas for the project from our experience, books, blogs and forums. We automate these ideas, integrate them into our Checkstyle plugin. We improve Eclipse to “drop hints” to developers about error-prone practices, thus, speeding up the process of their self-education, and assisting advanced developers.  
+      <br/>
+      <br/>
+      We have ideas and we cannot wait till Checkstyle project apply our patches. Eclipse plugin allow developers to take advantage of our ideas right now and give them freedom to choose those Checks they need and consider reasonable. But we also provide  <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/tree/master/sevntu-checkstyle-maven-plugin">extension</a> to maven-chestyle-plugin, so anyone can <a href="https://github.com/sevntu-checkstyle/checkstyle-samples">use our Checks</a> in maven site generation or build validation. 
+      <br/> 
+      <br/>
+      This project is the best way to study Java from the syntax point of view. It helps students to acquire best practice approaches right from the beginning of their developer's career, instead of going through long and tiring trial and error method. After completing writing a Check, student will get knowledge about how to automate the process of error-detection in code, and he will use that results in all his future work places, and help all other developers avoid writing a 'bad' code. Writing a Check requires only basic Java knowledge. Code of one Check is in average of 400 lines, so it makes it easier for a student to complete task on time. 
+      <br/>
+      <br/>
+
+    <b>Issue Tracker entries:</b> 
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/90'>#90</a>,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/86'>#86</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/83'>#83</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/82'>#82</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/81'>#81</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/80'>#80</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/79'>#79</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/77'>#77</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/76'>#76</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/75'>#75</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/74'>#74</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/73'>#73</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/72'>#72</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/71'>#71</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/70'>#70</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/69'>#69</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/68'>#68</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/67'>#67</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/66'>#66</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/65'>#65</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/63'>#63</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/58'>#58</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/47'>#47</a> ,
+        <a href='https://github.com/sevntu-checkstyle/sevntu.checkstyle/issues/32'>#32</a>
+    <br/>
+    <br/>    
+    <b>Expected results:</b> All issues have to be closed; all code is to be covered with UTs; JavaDoc has to be created for each class; each Check should be tested against huge open-source projects (Spring, Hibernate, Log4j, …); patches should be created for Checkstyle project.
+    <br/>
+    <br/>
+    <b>Knowledge Prerequisite:</b> basic Java (Java SE) skills, basic knowledge of parsers and syntactic analysis.
+    <br/>
+    <br/>
+    <b>Mentor:</b> Roman Ivanov <romanivanov dash jr at gmail dot com>
+    <br/>
+    <br/>
+    <b>Mailing list: </b>sevntu-checkstyle [at] google groups [dot] com, <a href="http://groups.google.com/group/sevntu-checkstyle?hl=en">web page</a>
+    <br/>
+    <br/>
+    <b>IRC:</b> <a href="http://webchat.freenode.net/?channels=#sevntu.checkstyle">#sevntu.checkstyle on Freenode</a>
+    <br/>
+    <br/>
+    <b>Wiki:</b> <a href="https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki">to help student setup development enviroment quickly</a>
+    <br/>
+    <br/>
+
+
+  <h3><a href="https://github.com/EclipseDSM/Eclipse-DSM-viewer">Eclipse-DSM-viewer</a></h3>
+
+    <b>Brief explanation:</b>
+      <br/>
+      Dependency Structure Matrix (DSM) is a very powerful approach in the analysis of the software architecture and design. It allows a developer or an architect to see inter-module dependencies in a more convenient way than the traditional graph ("<a href="https://kepler-project.org/developers/teams/framework/design-docs/dependency-analysis/root-package-graph.png/image_view_fullscreen">box and arrows</a>") technique allow. Graph representation is too difficult to be used for applications that are bigger than 20 classes.
+      <br/>
+      <br/>
+      Dependency analysis is usually under-estimated during development or even completely ignored. It proves its effectiveness only on the stage when one try to divide project/class into several parts, or try to refactor code, or exchange part of project/class with new implementation, or try to UT code. The more dependencies a class has, the more complicated and painful the refactoring can be. Most of the unwanted dependencies are unintentional. They represent remnants after refactoring or incorrect selection during Intellisense suggestions (developer was too tired to notice that his DAO package started to use classes from UI package).
+      <br/>
+      <br/>
+      DSM already exist in popular IDEs (<a href="http://www.jetbrains.com/idea/features/dependency_analysis.html">Idea</a>, <a href="http://weblogs.asp.net/gunnarpeipman/archive/2009/11/05/visual-studio-2010-visualizing-dependencies.aspx">MS Visual Studio</a>), and as separate application <a href="http://www.lattix.com/files/dl/slides/s.php?directory=4tour">Lattix</a>, <a href="http://www.ndepend.com/Doc_Matrix.aspx">NDepend</a>, <a href="http://docs.codehaus.org/display/SONAR/Cycles+-+Dependency+Structure+Matrix">Sonar</a>. 
+      <br/>
+      <br/>
+      Our idea is to create native to Eclipse plugin with free license to let all Java developers that use Eclipse to integrate DSM analysis during code writing process instead of analyzing the code after task completion. In that milestone we will focus on UI presentation. DSM structure will be taken from open-source <a href="http://web.sysart.fi/dtangler/">dtangler</a> library. Additionally, we will focus on improving convenience of DSM usage in Eclipse and simplifying navigation from matrix to real code. Usage of dtangler library was already successfully tested in our <a href="https://github.com/sevntu-checkstyle/dsm-maven-plugin">dsm-maven-plugin</a>. Detailed description of Eclipse-dsm-viewer project could be found <a href="http://eclipsedsm.github.com/Eclipse-DSM-viewer/">here</a>.
+    <br/>
+    <br/>    
+    <b>Issue Tracker entries:</b>
+    <br/>     
+        Main task: <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/24'>#24</a>
+    <br/>
+        Satellite tasks:
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/22'>#22</a>,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/23'>#23</a> ,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/25'>#25</a> ,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/26'>#26</a> ,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/27'>#27</a> ,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/28'>#28</a> ,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/29'>#29</a> ,
+        <a href='https://github.com/EclipseDSM/Eclipse-DSM-viewer/issues/30'>#30</a>
+    <br/>
+    <br/>    
+    <b>Expected results:</b>
+    <lu>
+      <li> Integration with Eclipse (pop-up menus, preferences, rendering as Eclipse View) </li>
+      <li> Existing or self-written UI control has to be used to show dependency matrix in a similar way as it is shown <a href="http://blogs.jetbrains.com/idea/wp-content/img/expandedDependencies3.gif">here</a>. (Levels of dependencies should be drawn in the flat manner, highlighting circles in matrix, tracing "from" and "to" dependency, showing difference in levels and strength of dependency between modules).
+          </li>
+      <li> Provide navigation from Matrix to Java code editor. </li>
+      <li> Plugin has to be tested on huge open-source projects (Spring, Hibernate, Log4j, ...) to examine its usability and performance. </li>
+    <lu>
+    <br/>
+    <br/>
+    <b>Knowledge Prerequisite:</b> basic Java (Java SE) skills, SWT, Eclipse RCP.
+    <br/>
+    <br/>
+    <b>Mentor:</b> Roman Ivanov <romanivanov dash jr at gmail dot com>
+    <br/>
+    <br/>
+    <b>Mailing list: </b>eclipse-dsm-viewer [at] google groups [dot] com, <a href="http://groups.google.com/group/eclipse-dsm-viewer?hl=en">web page</a>
+    <br/>
+    <br/>
+    <b>IRC:</b> <a href="http://webchat.freenode.net/?channels=#eclipse-dsm-viewer">#eclipse-dsm-viewer on Freenode</a>
+   <br/>
+   <br/>
+ <!--
+    <h2>Links</h2>    
+    <p>You can also clone the our projects with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/sevntu-checkstyle/sevntu.checkstyle</pre>
+      <pre>$ git clone git://github.com/sevntu-checkstyle/dsm-maven-plugin</pre>
+    </p>
+
+    <div class="footer">
+      All  : <a href="http://github.com/sevntu-checkstyle/sevntu.checkstyle">sevntu-checkstyle/sevntu.checkstyle</a>
+    </div>
+-->
+
+  
+</body>
+</html>
